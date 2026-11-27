@@ -1,41 +1,44 @@
-const stage = document.querySelector('.hero-window');
+const cinematicStages = [...document.querySelectorAll('[data-cinematic]')];
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
-const compactStage = matchMedia('(max-width: 700px)');
-let cameraFrame;
+let motionFrame = null;
 
-function updateCamera() {
-  cameraFrame = undefined;
-  const useTilt = !reduceMotion.matches && !compactStage.matches;
-  const progress = Math.min(1, Math.max(0, window.scrollY / 380));
-  stage.style.setProperty('--tilt', (useTilt ? 9 * (1 - progress) : 0) + 'deg');
-  stage.style.setProperty('--lift', (useTilt ? 14 * (1 - progress) : 0) + 'px');
+function clampProgress(value) {
+  return Math.min(1, Math.max(0, value));
 }
 
-function updateMotion() {
-  document.documentElement.dataset.motion = reduceMotion.matches ? 'off' : 'on';
-  updateCamera();
+function drawMotion() {
+  motionFrame = null;
+  if (reduceMotion.matches) return;
+
+  const viewport = document.documentElement.clientHeight;
+  if (!viewport) return;
+  // Sample every stage before updating styles so scrolling needs one layout read.
+  const bounds = cinematicStages.map(stage => stage.getBoundingClientRect());
+  cinematicStages.forEach((stage, index) => {
+    const { top, height } = bounds[index];
+    const entering = clampProgress((.96 * viewport - top) / (.72 * viewport));
+    const leaving = clampProgress(-top / Math.max(1, Math.min(height, viewport)));
+    stage.style.setProperty('--enter', entering.toFixed(4));
+    stage.style.setProperty('--exit', leaving.toFixed(4));
+  });
 }
 
-window.addEventListener('scroll', () => {
-  if (cameraFrame === undefined) cameraFrame = requestAnimationFrame(updateCamera);
-}, { passive: true });
-reduceMotion.addEventListener('change', updateMotion);
-compactStage.addEventListener('change', updateCamera);
-updateMotion();
-
-if ('IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    }
-  }, { threshold: .12 });
-  for (const feature of document.querySelectorAll('[data-reveal]')) {
-    revealObserver.observe(feature);
+function scheduleMotion() {
+  if (!reduceMotion.matches && motionFrame === null) {
+    motionFrame = requestAnimationFrame(drawMotion);
   }
 }
+
+function syncMotionPreference() {
+  document.documentElement.dataset.motion = reduceMotion.matches ? 'off' : 'on';
+  scheduleMotion();
+}
+
+window.addEventListener('scroll', scheduleMotion, { passive: true });
+window.addEventListener('resize', scheduleMotion);
+document.addEventListener('toggle', scheduleMotion, true);
+reduceMotion.addEventListener('change', syncMotionPreference);
+syncMotionPreference();
 
 const comparison = document.querySelector('#comparison');
 const wipe = document.querySelector('#wipe');

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Waywallen Custom adds wallpaper folders, launcher themes, and Scene Colors to a Linux wallpaper manager.">
-  <meta name="theme-color" content="#0d0e15">
+  <meta name="description" content="Waywallen Custom is an independent build of the open-source Linux wallpaper manager, with folders, launcher themes, and live color controls.">
+  <meta name="theme-color" content="#0a0b14">
   <title>Waywallen Custom — Live wallpapers for Linux</title>
   <link rel="icon" href="./assets/app-icon.png" type="image/png">
   <link rel="preload" as="image" href="./assets/library.webp">
@@ -15,11 +15,12 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="topbar">
     <div class="shell topbar-inner">
-      <a class="brand" href="./" aria-label="Waywallen Custom home">
+      <a class="brand" href="#opening" aria-label="Waywallen Custom home">
         <img src="./assets/app-icon.png" width="28" height="28" alt="">
         <span>Waywallen Custom</span>
       </a>
       <nav class="site-nav" aria-label="Sections">
+        <a href="#opening">About</a>
         <a href="#scenes">Scene Colors</a>
         <a href="#library">Folders</a>
         <a href="#themes">Themes</a>
@@ -28,21 +29,23 @@
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" id="opening" aria-labelledby="hero-heading">
+  <main id="main" tabindex="-1">
+    <section class="hero" id="opening" aria-labelledby="hero-heading" data-cinematic>
+      <div class="hero-light" aria-hidden="true"></div>
       <div class="shell hero-inner">
         <div class="hero-copy">
-          <p class="kicker">Live wallpapers for Linux</p>
-          <h1 id="hero-heading">Waywallen Custom</h1>
-          <p class="hero-lead">Make a wallpaper collection your own with folders, launcher themes, and live color controls.</p>
+          <p class="kicker">Who we are</p>
+          <h1 id="hero-heading">A desktop <span>of your own.</span></h1>
+          <p class="hero-lead">Waywallen Custom is our independent build of Waywallen, the open-source live wallpaper manager for Linux.</p>
+          <p class="hero-mission">Our mission is to make live wallpapers easier to organize and personalize. We want Linux wallpaper fans to help shape what we build next.</p>
           <div class="actions">
-            <a class="button button-primary" href="#install">Get Waywallen Custom</a>
-            <a class="button button-secondary" href="#scenes">Try Scene Colors</a>
+            <a class="button button-primary" href="#scenes">Explore the features <span class="arrow-down" aria-hidden="true"></span></a>
+            <a class="button button-secondary" href="https://github.com/pialo3434/waywallen-custom/issues">Share an idea</a>
           </div>
         </div>
         <figure class="hero-figure">
           <div class="hero-window">
-            <img src="./assets/library.webp" width="1280" height="830" alt="Waywallen's wallpaper library showing colored folder cards and wallpaper thumbnails" fetchpriority="high">
+            <img src="./assets/library.webp" width="1280" height="830" alt="Waywallen’s wallpaper library showing colored folder cards and wallpaper thumbnails" fetchpriority="high">
           </div>
           <figcaption>Waywallen Custom with a test wallpaper library.</figcaption>
         </figure>
@@ -50,14 +53,22 @@
     </section>
 
     <section id="scenes" class="chapter scenes" aria-labelledby="scene-heading">
-      <div class="shell">
-        <div class="section-intro" data-reveal>
-          <p class="kicker">Scene Colors</p>
-          <h2 id="scene-heading">Find the right light.</h2>
-          <p>Adjust brightness, contrast, saturation, and hue in a live preview. Waywallen keeps your settings for each scene.</p>
+      <div class="scene-billboard" data-cinematic>
+        <div class="scene-earth" aria-hidden="true">
+          <img src="./assets/blue-marble.webp" width="1280" height="1280" alt="" loading="lazy">
         </div>
+        <div class="shell scene-title">
+          <div class="section-intro">
+            <p class="kicker">Scene Colors</p>
+            <h2 id="scene-heading">Find the<br>right light.</h2>
+            <p>Adjust brightness, contrast, saturation, and hue in a live preview. Waywallen keeps your settings for each scene.</p>
+            <a class="inline-link" href="#color-demo">Try the color demo <span class="arrow-down" aria-hidden="true"></span></a>
+          </div>
+        </div>
+      </div>
 
-        <div class="scene-stage" data-reveal>
+      <div class="shell scene-lab" id="color-demo">
+        <div class="scene-stage">
           <figure class="photo-demo">
             <div class="comparison" id="comparison">
               <img class="compare-image" src="./assets/blue-marble.webp" width="1280" height="1280" alt="The Blue Marble photograph taken by the Apollo 17 crew" loading="lazy">
@@ -98,7 +109,7 @@
           </div>
         </div>
 
-        <details class="product-detail" data-reveal>
+        <details class="product-detail">
           <summary>See the controls in Waywallen</summary>
           <figure>
             <img src="./assets/scene-controls.webp" width="1280" height="830" alt="Waywallen's Color adjustments panel with brightness, contrast, saturation, and hue sliders" loading="lazy">
@@ -110,43 +121,65 @@
 
     <section id="library" class="chapter library" aria-labelledby="library-heading">
       <div class="shell feature-grid">
-        <div class="feature-copy" data-reveal>
+        <div class="feature-copy">
           <p class="kicker">Wallpaper folders</p>
           <h2 id="library-heading">Give every wallpaper a place.</h2>
           <p>Group wallpapers by mood, project, or display. Each folder has a name, an icon, and a color you can change from the library.</p>
           <div class="folder-switch" id="folder-switch" role="group" aria-label="View a library screenshot" hidden>
-            <button type="button" data-folder-view="library" aria-pressed="true">Library view</button>
-            <button type="button" data-folder-view="editor" aria-pressed="false">Folder editor</button>
+            <button type="button" data-folder-view="editor" aria-pressed="true">Folder editor</button>
+            <button type="button" data-folder-view="library" aria-pressed="false">Library view</button>
           </div>
         </div>
 
-        <figure class="folder-stage" id="folder-stage" data-view="library" data-reveal>
+        <figure class="folder-stage" id="folder-stage" data-view="editor" data-cinematic>
           <div class="folder-images">
-            <img class="folder-library" src="./assets/library.webp" width="1280" height="830" alt="Folder cards in the Waywallen library" loading="lazy">
-            <img class="folder-editor" src="./assets/folder-editor.webp" width="384" height="670" alt="Waywallen folder editor with an editable name and choices of icons and colors" loading="lazy" aria-hidden="true">
+            <img class="folder-library" src="./assets/library.webp" width="1280" height="830" alt="Folder cards in the Waywallen library" loading="lazy" aria-hidden="true">
+            <img class="folder-editor" src="./assets/folder-editor.webp" width="384" height="670" alt="Waywallen folder editor with an editable name and choices of icons and colors" loading="lazy">
           </div>
-          <figcaption id="folder-caption">Folder cards in the test wallpaper library.</figcaption>
+          <figcaption id="folder-caption">The folder editor with a test folder selected.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="themes" class="chapter themes" aria-labelledby="themes-heading">
+    <section id="themes" class="chapter themes" aria-labelledby="themes-heading" data-cinematic>
       <div class="shell">
-        <div class="section-intro" data-reveal>
+        <div class="section-intro">
           <p class="kicker">Launcher themes</p>
           <h2 id="themes-heading">A different look in a click.</h2>
           <p>Pick a built-in preset or clone one and make it your own. Change the palette, texture, and motion of the launcher.</p>
         </div>
-        <figure class="theme-gallery" data-reveal>
-          <img src="./assets/theme-presets.webp" width="694" height="320" alt="Waywallen's real theme presets, including OLED, Christmas, Aurora, Sea Glass, and Ember">
-          <figcaption>Presets in Waywallen’s Themes screen.</figcaption>
-        </figure>
+        <div class="theme-reel" role="group" aria-label="Featured theme presets" data-cinematic>
+          <figure class="theme-frame theme-sea-glass">
+            <div class="theme-preview">
+              <img src="./assets/theme-presets.webp" width="694" height="320" alt="" loading="lazy">
+            </div>
+            <figcaption>Sea Glass</figcaption>
+          </figure>
+          <figure class="theme-frame theme-aurora">
+            <div class="theme-preview">
+              <img src="./assets/theme-presets.webp" width="694" height="320" alt="" loading="lazy">
+            </div>
+            <figcaption>Aurora</figcaption>
+          </figure>
+          <figure class="theme-frame theme-ember">
+            <div class="theme-preview">
+              <img src="./assets/theme-presets.webp" width="694" height="320" alt="" loading="lazy">
+            </div>
+            <figcaption>Ember</figcaption>
+          </figure>
+        </div>
+        <details class="product-detail theme-gallery">
+          <summary>See all the presets in Waywallen</summary>
+          <figure>
+            <img src="./assets/theme-presets.webp" width="694" height="320" alt="The Waywallen Themes screen showing OLED, Christmas, Aurora, Sea Glass, and Ember with a Clone action under each preset" loading="lazy">
+          </figure>
+        </details>
       </div>
     </section>
 
-    <section id="install" class="chapter install" aria-labelledby="install-heading">
-      <div class="shell feature-grid">
-        <div class="feature-copy" data-reveal>
+    <section id="install" class="chapter install" aria-labelledby="install-heading" data-cinematic>
+      <div class="shell">
+        <div class="section-intro">
           <p class="kicker">Linux setup</p>
           <h2 id="install-heading">Put it on your desktop.</h2>
           <p>The x86-64 Flatpak includes Scene Colors. Accept the invitation to the private Waywallen repository and sign in to GitHub to download it.</p>
@@ -155,7 +188,7 @@
             <a class="button button-secondary" href="https://github.com/pialo3434/waywallen/blob/customizations/CUSTOM_SETUP.md">Read the setup guide</a>
           </div>
         </div>
-        <ol class="setup-steps" data-reveal>
+        <ol class="setup-steps">
           <li>
             <details name="setup" open>
               <summary>Install the Flatpak</summary>
@@ -187,6 +220,7 @@ flatpak run --user --branch=custom org.waywallen.waywallen</code></pre>
       <p>An independent build of Waywallen for Linux.</p>
     </div>
     <nav aria-label="Source and credits">
+      <a href="https://github.com/pialo3434/waywallen-custom/issues">Give feedback</a>
       <a href="https://github.com/pialo3434/waywallen">App repository</a>
       <a href="https://github.com/pialo3434/open-wallpaper-engine">Renderer repository</a>
       <a href="https://github.com/pialo3434/waywallen-custom#credits">Website credits</a>
