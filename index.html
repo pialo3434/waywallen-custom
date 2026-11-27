@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Waywallen Custom for Linux adds live scene grading, wallpaper folders, and customizable launcher themes. Try the controls in your browser.">
+  <meta name="theme-color" content="#080b10">
+  <title>Waywallen Custom — A live wallpaper desktop for Linux</title>
+  <link rel="icon" type="image/png" href="./assets/icon.png">
+  <link rel="preload" as="image" href="./assets/night-coast.webp">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="./" aria-label="Waywallen Custom home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Waywallen <small>Custom</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#scenes">Scene Colors</a>
+        <a href="#library">Folders</a>
+        <a href="#themes">Themes</a>
+      </nav>
+      <a class="nav-install" href="#install">Install</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="opening" aria-labelledby="hero-heading">
+      <div class="reel-art" aria-hidden="true">
+        <img class="reel-image is-current" data-reel-image="coast" src="./assets/night-coast.webp" alt="" fetchpriority="high">
+        <img class="reel-image" data-reel-image="valley" src="./assets/valley.webp" alt="" decoding="async" fetchpriority="low">
+        <img class="reel-image" data-reel-image="city" src="./assets/after-hours.webp" alt="" decoding="async" fetchpriority="low">
+      </div>
+      <div class="hero-light" aria-hidden="true"></div>
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <p class="kicker"><span aria-hidden="true"></span> Waywallen Custom for Linux</p>
+          <h1 id="hero-heading"><span>Your desktop</span><span>comes alive.</span></h1>
+          <p class="hero-lead">Fine-tune living wallpapers, build a theme, and give every scene a place in your library.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#install">Get Waywallen Custom</a>
+            <a class="button button-glass" href="#scenes"><span class="play-icon" aria-hidden="true"></span> Try Scene Colors</a>
+          </div>
+        </div>
+
+        <div class="reel-controls" id="reel-controls" hidden>
+          <div class="reel-buttons" role="group" aria-label="Choose a wallpaper for the opening">
+            <button type="button" class="reel-pick" data-scene="coast" aria-pressed="true">
+              <img src="./assets/night-coast.webp" alt=""><span>Polar coast</span>
+            </button>
+            <button type="button" class="reel-pick" data-scene="valley" aria-pressed="false">
+              <img src="./assets/valley.webp" alt=""><span>Glacial valley</span>
+            </button>
+            <button type="button" class="reel-pick" data-scene="city" aria-pressed="false">
+              <img src="./assets/after-hours.webp" alt=""><span>After hours</span>
+            </button>
+          </div>
+          <button id="motion-toggle" class="motion-toggle" type="button">Pause motion</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter scene-chapter shell" id="scenes" aria-labelledby="scene-heading">
+      <div class="chapter-heading" data-reveal="words">
+        <p class="chapter-label">Scene Colors</p>
+        <h2 id="scene-heading">Grade a scene live.</h2>
+        <p>See the color change as you move a slider. The renderer stores adjustments for each wallpaper, so every scene can keep its own look.</p>
+      </div>
+
+      <figure class="grading-stage" data-reveal="frame">
+        <div class="stage-bar">
+          <span class="stage-lamp" aria-hidden="true"></span>
+          <h3>Glacial valley</h3>
+          <span class="stage-context">Interactive preview</span>
+        </div>
+        <div class="comparison" id="comparison">
+          <img class="grade-image" src="./assets/valley.webp" width="1536" height="1024" alt="Glacial river and mountains at sunset" loading="lazy">
+          <img class="grade-image graded" src="./assets/valley.webp" width="1536" height="1024" alt="" aria-hidden="true" loading="lazy">
+          <span class="compare-label compare-original">Original</span>
+          <span class="compare-label compare-adjusted">Adjusted</span>
+          <span class="compare-divider" aria-hidden="true"><i></i></span>
+          <label class="sr-only" for="wipe">Original and adjusted split</label>
+          <input id="wipe" class="wipe-control" type="range" min="0" max="100" value="48" disabled>
+        </div>
+        <div class="stage-controls">
+          <div class="preset-line">
+            <div class="preset-group" id="looks" role="group" aria-label="Color presets" hidden>
+              <button type="button" data-look="aurora" aria-pressed="true">Aurora</button>
+              <button type="button" data-look="gold" aria-pressed="false">Golden hour</button>
+              <button type="button" data-look="night" aria-pressed="false">Blue hour</button>
+            </div>
+            <button type="button" class="text-button" id="reset-colors" disabled>Reset colors</button>
+          </div>
+          <fieldset id="scene-controls" class="grade-sliders" disabled>
+            <legend class="sr-only">Scene color adjustments</legend>
+            <div class="grade-control">
+              <div><label for="brightness">Brightness</label><output for="brightness">109%</output></div>
+              <input id="brightness" type="range" min="55" max="145" value="109" data-unit="%">
+            </div>
+            <div class="grade-control">
+              <div><label for="contrast">Contrast</label><output for="contrast">111%</output></div>
+              <input id="contrast" type="range" min="55" max="145" value="111" data-unit="%">
+            </div>
+            <div class="grade-control">
+              <div><label for="saturation">Saturation</label><output for="saturation">132%</output></div>
+              <input id="saturation" type="range" min="0" max="200" value="132" data-unit="%">
+            </div>
+            <div class="grade-control">
+              <div><label for="hue">Hue shift</label><output for="hue">36°</output></div>
+              <input id="hue" type="range" min="-180" max="180" value="36" data-unit="°" data-filter-unit="deg">
+            </div>
+          </fieldset>
+        </div>
+        <figcaption>Drag the divider to compare. Presets and sliders change the adjusted side.</figcaption>
+      </figure>
+    </section>
+
+    <section class="library-band" id="library" aria-labelledby="library-heading">
+      <div class="shell chapter library-layout">
+        <div class="library-copy" data-reveal="words">
+          <p class="chapter-label">Wallpaper folders</p>
+          <h2 id="library-heading">A library you can find your way around.</h2>
+          <p>Group wallpapers by project, mood, or display. Name each folder, pick its icon and color, and move a batch of wallpapers into it in one go.</p>
+          <details class="app-shot">
+            <summary>See the real library</summary>
+            <figure>
+              <img src="./assets/folders.webp" width="1280" height="830" loading="lazy" alt="Waywallen library showing Scenes, Main Themes, and After Hours folder cards">
+              <figcaption>Waywallen with test wallpapers.</figcaption>
+            </figure>
+          </details>
+        </div>
+
+        <div class="folder-gallery" data-reveal="spread">
+          <div class="folder-choices" id="folder-choices" role="group" aria-label="Browse example folders" hidden>
+            <button type="button" data-folder="scenes" aria-pressed="true"><i aria-hidden="true"></i> Scenery</button>
+            <button type="button" data-folder="after" aria-pressed="false"><i aria-hidden="true"></i> After dark</button>
+            <button type="button" data-folder="water" aria-pressed="false"><i aria-hidden="true"></i> Coastlines</button>
+          </div>
+          <figure class="folder-shelf" id="folder-shelf" data-folder-view="scenes">
+            <div class="folder-stack">
+              <img class="folder-image rear" id="folder-back" src="./assets/valley.webp" alt="" loading="lazy">
+              <img class="folder-image front" id="folder-front" src="./assets/night-coast.webp" alt="Polar coast at night" loading="lazy">
+            </div>
+            <figcaption><span id="folder-caption">Scenery</span><small id="folder-count">2 sample wallpapers</small></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="themes-band" id="themes" aria-labelledby="themes-heading">
+      <div class="shell chapter theme-layout">
+        <div class="theme-copy" data-reveal="words">
+          <p class="chapter-label">Launcher themes</p>
+          <h2 id="themes-heading">Give the app a new atmosphere.</h2>
+          <p>Start with Tidepool or create your own theme. Set colors for the frame, panels, and buttons. Add a texture or a motion effect when you want more depth.</p>
+          <div class="theme-choices" id="theme-choices" role="group" aria-label="Preview a launcher palette" hidden>
+            <button type="button" data-palette="tidepool" aria-pressed="true"><i aria-hidden="true"></i> Tidepool</button>
+            <button type="button" data-palette="ember" aria-pressed="false"><i aria-hidden="true"></i> Ember</button>
+            <button type="button" data-palette="dusk" aria-pressed="false"><i aria-hidden="true"></i> Dusk</button>
+          </div>
+        </div>
+
+        <figure class="theme-theater" id="theme-theater" data-palette-view="tidepool" data-reveal="frame">
+          <div class="theme-window" aria-hidden="true">
+            <div class="theme-window-bar"><i></i><i></i><i></i><span>Waywallen</span></div>
+            <div class="theme-window-main">
+              <div class="theme-window-sidebar"><i></i><i></i><i></i><i></i></div>
+              <div class="theme-window-content">
+                <img src="./assets/night-coast.webp" alt="" loading="lazy">
+                <div class="theme-swatches"><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+          <figcaption id="theme-caption">Tidepool palette preview</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="install-band" id="install" aria-labelledby="install-heading">
+      <div class="shell chapter install-layout">
+        <div class="install-intro" data-reveal="words">
+          <p class="chapter-label">Linux setup</p>
+          <h2 id="install-heading">Bring it to your desktop.</h2>
+          <p>The x86-64 Flatpak includes Scene Colors. Accept the invitation to the private Waywallen repo and sign in to GitHub to download it.</p>
+          <div class="actions">
+            <a class="button button-primary" href="https://github.com/pialo3434/waywallen/releases">Open private releases</a>
+            <a class="button button-glass" href="https://github.com/pialo3434/waywallen/blob/customizations/CUSTOM_SETUP.md">Read the setup guide</a>
+          </div>
+        </div>
+        <ol class="setup-steps" role="list" data-reveal="steps">
+          <li>
+            <details name="setup" open>
+              <summary>Install the Flatpak.</summary>
+              <p>Download the custom Flatpak, install it, and run the <code>custom</code> branch. Check desktop integration for your Linux environment.</p>
+              <pre><code>flatpak install --user ./Waywallen-Arch-Themes-x86_64.flatpak
+flatpak run --user --branch=custom org.waywallen.waywallen</code></pre>
+            </details>
+          </li>
+          <li>
+            <details name="setup">
+              <summary>Add your Wallpaper Engine library.</summary>
+              <p>Open <strong>Wallpapers → Library Manager</strong>, add a Wallpaper Engine source, and select the Steam library directory that contains <code>steamapps</code>.</p>
+            </details>
+          </li>
+          <li>
+            <details name="setup">
+              <summary>Open a scene and tune it.</summary>
+              <p>Select <strong>Live preview</strong>. Under <strong>Color adjustments</strong>, switch on <strong>Show color options</strong> and use the sliders.</p>
+            </details>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer">
+    <div>
+      <a class="brand" href="./" aria-label="Waywallen Custom home"><span class="brand-mark" aria-hidden="true"></span><span>Waywallen <small>Custom</small></span></a>
+      <p>An independent build of Waywallen for Linux.</p>
+    </div>
+    <nav aria-label="Repositories and credits">
+      <a href="https://github.com/pialo3434/waywallen">App repo</a>
+      <a href="https://github.com/pialo3434/open-wallpaper-engine">Renderer repo</a>
+      <a href="https://github.com/waywallen/waywallen">Upstream Waywallen</a>
+      <a href="https://github.com/waywallen/open-wallpaper-engine">Upstream renderer</a>
+      <a href="https://waywallen.github.io/">Original site</a>
+    </nav>
+  </footer>
+</body>
+</html>
