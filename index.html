@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Waywallen Custom is an independent build of the open-source Linux wallpaper manager, with folders, launcher themes, and live color controls.">
-  <meta name="theme-color" content="#0a0b14">
+  <meta name="description" content="Try Waywallen Custom’s live color controls, wallpaper folders, and custom launcher themes for Linux.">
+  <meta name="theme-color" content="#090910">
   <title>Waywallen Custom — Live wallpapers for Linux</title>
   <link rel="icon" href="./assets/app-icon.png" type="image/png">
-  <link rel="preload" as="image" href="./assets/library.webp">
-  <link rel="stylesheet" href="./styles.css?v=b135beb">
-  <script src="./site.js?v=b135beb" defer></script>
+  <link rel="preload" as="image" href="./assets/workshop-spectrum.webp">
+  <link rel="stylesheet" href="./styles.css?v=workshop">
+  <script src="./site.js?v=workshop" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,150 +30,195 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="hero" id="opening" aria-labelledby="hero-heading" data-cinematic>
-      <div class="hero-light" aria-hidden="true"></div>
+    <section class="hero" id="opening" aria-labelledby="hero-heading" data-cinematic data-player>
+      <div class="hero-backdrop" aria-hidden="true">
+        <video muted loop playsinline preload="none" poster="./assets/workshop-spectrum.webp" data-wallpaper-video="./assets/workshop-spectrum.mp4"></video>
+      </div>
       <div class="shell hero-inner">
         <div class="hero-copy">
           <p class="kicker">Who we are</p>
           <h1 id="hero-heading">A desktop <span>of your own.</span></h1>
-          <p class="hero-lead">Waywallen Custom is our independent build of Waywallen, the open-source live wallpaper manager for Linux.</p>
-          <p class="hero-mission">Our mission is to make live wallpapers easier to organize and personalize. We want Linux wallpaper fans to help shape what we build next.</p>
+          <p>We make Waywallen Custom, an independent build of the open-source live wallpaper manager for Linux.</p>
+          <p>Our mission is to make live wallpapers easier to organize and personalize. Help us shape what we build next.</p>
           <div class="actions">
             <a class="button button-primary" href="#scenes">Explore the features <span class="arrow-down" aria-hidden="true"></span></a>
             <a class="button button-secondary" href="https://github.com/pialo3434/waywallen-custom/issues">Share an idea</a>
           </div>
         </div>
-        <figure class="hero-figure">
-          <div class="hero-window">
-            <img src="./assets/library.webp" width="1280" height="830" alt="Waywallen’s wallpaper library showing colored folder cards and wallpaper thumbnails" fetchpriority="high">
-          </div>
-          <figcaption>Waywallen Custom with a test wallpaper library.</figcaption>
-        </figure>
+        <div class="hero-media-controls">
+          <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=921617616">[4K] Audio Visualizer on Steam Workshop</a>
+          <button type="button" class="motion-button" data-playback data-label="opening wallpaper" hidden>Play motion</button>
+          <span class="media-status sr-only" data-media-status aria-live="polite"></span>
+        </div>
       </div>
     </section>
 
-    <section id="scenes" class="chapter scenes" aria-labelledby="scene-heading">
-      <div class="scene-billboard" data-cinematic>
-        <div class="scene-earth" aria-hidden="true">
-          <img src="./assets/blue-marble.webp" width="1280" height="1280" alt="" loading="lazy">
+    <section id="scenes" class="chapter scenes" aria-labelledby="scene-heading" data-cinematic>
+      <div class="shell">
+        <div class="section-intro">
+          <p class="kicker">Scene Colors</p>
+          <h2 id="scene-heading">Color that moves.</h2>
+          <p>Use the familiar Wallpaper Engine controls for brightness, contrast, saturation, and hue. Waywallen remembers your settings for each supported scene.</p>
         </div>
-        <div class="shell scene-title">
-          <div class="section-intro">
-            <p class="kicker">Scene Colors</p>
-            <h2 id="scene-heading">Find the<br>right light.</h2>
-            <p>Adjust brightness, contrast, saturation, and hue in a live preview. Waywallen keeps your settings for each scene.</p>
-            <a class="inline-link" href="#color-demo">Try the color demo <span class="arrow-down" aria-hidden="true"></span></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="shell scene-lab" id="color-demo">
-        <div class="scene-stage">
-          <figure class="photo-demo">
-            <div class="comparison" id="comparison">
-              <img class="compare-image" src="./assets/blue-marble.webp" width="1280" height="1280" alt="The Blue Marble photograph taken by the Apollo 17 crew" loading="lazy">
-              <img class="compare-image adjusted" src="./assets/blue-marble.webp" width="1280" height="1280" alt="" aria-hidden="true" loading="lazy">
-              <span class="compare-label original-label">Original</span>
-              <span class="compare-label adjusted-label">Adjusted</span>
-              <span class="compare-divider" aria-hidden="true"></span>
-              <label class="sr-only" for="wipe">Position of the original and adjusted split</label>
-              <input id="wipe" class="wipe-control" type="range" min="0" max="100" value="50" disabled>
-            </div>
-            <figcaption>Browser demo using the Apollo 17 <a href="https://images.nasa.gov/details/as17-148-22727">Blue Marble photo</a>. Drag the divider to compare.</figcaption>
-          </figure>
+        <div class="scene-reveal" id="color-demo" data-cinematic>
+          <div class="scene-stage" data-player>
+            <figure class="scene-preview">
+              <div class="comparison" id="comparison" style="--split: 48%">
+                <video muted loop playsinline preload="none" poster="./assets/workshop-spectrum.webp" data-wallpaper-video="./assets/workshop-spectrum.mp4" aria-hidden="true"></video>
+                <div class="adjusted" aria-hidden="true">
+                  <img src="./assets/workshop-spectrum.webp" width="1120" height="630" alt="" loading="lazy">
+                  <canvas width="1120" height="630" hidden></canvas>
+                </div>
+                <span class="compare-label original-label">Original</span>
+                <span class="compare-label adjusted-label">Adjusted</span>
+                <span class="compare-divider" aria-hidden="true"></span>
+              </div>
+              <div class="compare-tools">
+                <label for="wipe">Before and after</label>
+                <input id="wipe" type="range" min="0" max="100" value="48" disabled>
+                <button type="button" class="motion-button" data-playback data-label="color demo wallpaper" hidden>Play motion</button>
+                <span class="media-status sr-only" data-media-status aria-live="polite"></span>
+              </div>
+              <figcaption>Browser demo using an animated recording of <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=921617616">[4K] Audio Visualizer by Alice</a>. Slide the split to compare the same frame.</figcaption>
+            </figure>
 
-          <div class="controls-panel">
-            <div class="controls-heading">
-              <h3>Scene controls</h3>
-              <button type="button" class="quiet-button" id="reset-colors" disabled>Reset</button>
+            <div class="controls-panel">
+              <div class="controls-heading">
+                <h3>Scene controls</h3>
+                <button type="button" class="text-button" id="reset-colors" disabled>Reset</button>
+              </div>
+              <div class="grade-presets" id="grade-presets" role="group" aria-label="Example color grades" hidden>
+                <button type="button" data-grade="violet" aria-pressed="true">Violet</button>
+                <button type="button" data-grade="gold" aria-pressed="false">Gold</button>
+                <button type="button" data-grade="neutral" aria-pressed="false">Neutral</button>
+              </div>
+              <fieldset class="grade-controls" id="scene-controls" disabled>
+                <legend class="sr-only">Adjust the demo wallpaper</legend>
+                <div class="control">
+                  <div><label for="brightness">Brightness</label><output for="brightness">111%</output></div>
+                  <input id="brightness" type="range" min="30" max="175" value="111" data-unit="%">
+                </div>
+                <div class="control">
+                  <div><label for="contrast">Contrast</label><output for="contrast">114%</output></div>
+                  <input id="contrast" type="range" min="40" max="180" value="114" data-unit="%">
+                </div>
+                <div class="control">
+                  <div><label for="saturation">Saturation</label><output for="saturation">135%</output></div>
+                  <input id="saturation" type="range" min="0" max="200" value="135" data-unit="%">
+                </div>
+                <div class="control">
+                  <div><label for="hue">Hue shift</label><output for="hue">42°</output></div>
+                  <input id="hue" type="range" min="-180" max="180" value="42" data-unit="°" data-filter-unit="deg">
+                </div>
+              </fieldset>
             </div>
-            <fieldset class="grade-controls" id="scene-controls" disabled>
-              <legend class="sr-only">Adjust the demo photograph</legend>
-              <div class="control">
-                <div><label for="brightness">Brightness</label><output for="brightness">110%</output></div>
-                <input id="brightness" type="range" min="60" max="145" value="110" data-unit="%">
-              </div>
-              <div class="control">
-                <div><label for="contrast">Contrast</label><output for="contrast">117%</output></div>
-                <input id="contrast" type="range" min="60" max="145" value="117" data-unit="%">
-              </div>
-              <div class="control">
-                <div><label for="saturation">Saturation</label><output for="saturation">128%</output></div>
-                <input id="saturation" type="range" min="0" max="165" value="128" data-unit="%">
-              </div>
-              <div class="control">
-                <div><label for="hue">Hue shift</label><output for="hue">28°</output></div>
-                <input id="hue" type="range" min="-180" max="180" value="28" data-unit="°" data-filter-unit="deg">
-              </div>
-            </fieldset>
           </div>
         </div>
 
         <details class="product-detail">
           <summary>See the controls in Waywallen</summary>
           <figure>
-            <img src="./assets/scene-controls.webp" width="1280" height="830" alt="Waywallen's Color adjustments panel with brightness, contrast, saturation, and hue sliders" loading="lazy">
-            <figcaption>The Color adjustments panel with a test scene selected.</figcaption>
+            <img src="./assets/scene-controls.webp" width="1280" height="830" alt="Waywallen’s Color adjustments panel showing brightness, contrast, saturation, and hue sliders for a test scene" loading="lazy">
           </figure>
         </details>
       </div>
     </section>
 
     <section id="library" class="chapter library" aria-labelledby="library-heading">
-      <div class="shell feature-grid">
-        <div class="feature-copy">
+      <div class="shell">
+        <div class="section-intro">
           <p class="kicker">Wallpaper folders</p>
-          <h2 id="library-heading">Give every wallpaper a place.</h2>
-          <p>Group wallpapers by mood, project, or display. Each folder has a name, an icon, and a color you can change from the library.</p>
-          <div class="folder-switch" id="folder-switch" role="group" aria-label="View a library screenshot" hidden>
-            <button type="button" data-folder-view="editor" aria-pressed="true">Folder editor</button>
-            <button type="button" data-folder-view="library" aria-pressed="false">Library view</button>
-          </div>
+          <h2 id="library-heading">Give your library some order.</h2>
+          <p>Group wallpapers by mood or display. Give each folder its own name, icon, and color, then add wallpapers from your library.</p>
         </div>
 
-        <figure class="folder-stage" id="folder-stage" data-view="editor" data-cinematic>
-          <div class="folder-images">
-            <img class="folder-library" src="./assets/library.webp" width="1280" height="830" alt="Folder cards in the Waywallen library" loading="lazy" aria-hidden="true">
-            <img class="folder-editor" src="./assets/folder-editor.webp" width="384" height="670" alt="Waywallen folder editor with an editable name and choices of icons and colors" loading="lazy">
+        <div class="folder-studio" id="folder-demo" data-cinematic hidden>
+          <section class="folder-workbench" aria-labelledby="folder-demo-heading">
+            <h3 id="folder-demo-heading">Make a folder</h3>
+            <label class="folder-name-label" for="folder-name">Folder name</label>
+            <input type="text" id="folder-name" value="After Hours" maxlength="32" autocomplete="off">
+            <fieldset class="folder-choices">
+              <legend>Icon</legend>
+              <label><input type="radio" name="folder-icon" value="folder" checked><span>Folder</span></label>
+              <label><input type="radio" name="folder-icon" value="planet"><span>Planet</span></label>
+              <label><input type="radio" name="folder-icon" value="sparks"><span>Sparkles</span></label>
+            </fieldset>
+            <fieldset class="folder-choices folder-colors">
+              <legend>Color</legend>
+              <label class="choice-violet"><input type="radio" name="folder-color" value="violet" checked><span>Violet</span></label>
+              <label class="choice-teal"><input type="radio" name="folder-color" value="teal"><span>Teal</span></label>
+              <label class="choice-amber"><input type="radio" name="folder-color" value="amber"><span>Amber</span></label>
+            </fieldset>
+          </section>
+
+          <section class="folder-examples" aria-labelledby="folder-examples-heading">
+            <div class="folder-card" id="live-folder" data-color="violet">
+              <svg class="folder-emblem" width="38" height="38" viewBox="0 0 24 24" aria-hidden="true">
+                <path id="folder-icon-shape" d="M3 6.5h7l2 2h9v10H3z M3 11h18"></path>
+              </svg>
+              <div>
+                <strong id="live-folder-name">After Hours</strong>
+                <output id="folder-tally" aria-live="polite">1 wallpaper</output>
+              </div>
+              <ul id="folder-contents" aria-label="Wallpapers in the folder"><li>Spectrum</li></ul>
+            </div>
+            <h3 id="folder-examples-heading">Add or remove demo wallpapers</h3>
+            <div class="wallpaper-choices">
+              <label class="wallpaper-tile">
+                <input type="checkbox" name="folder-wallpaper" value="Spectrum" checked>
+                <span class="tile-art"><img src="./assets/workshop-spectrum.webp" width="1120" height="630" alt="" loading="lazy"></span>
+                <span>Spectrum</span>
+              </label>
+              <label class="wallpaper-tile">
+                <input type="checkbox" name="folder-wallpaper" value="After Dark">
+                <span class="tile-art tile-cool"><img src="./assets/workshop-spectrum.webp" width="1120" height="630" alt="" loading="lazy"></span>
+                <span>After Dark</span>
+              </label>
+              <label class="wallpaper-tile">
+                <input type="checkbox" name="folder-wallpaper" value="Gold Shift">
+                <span class="tile-art tile-gold"><img src="./assets/workshop-spectrum.webp" width="1120" height="630" alt="" loading="lazy"></span>
+                <span>Gold Shift</span>
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <details class="product-detail">
+          <summary>See the library and folder editor in Waywallen</summary>
+          <div class="folder-captures">
+            <figure>
+              <a href="./assets/library.webp"><img src="./assets/library.webp" width="1280" height="500" alt="Waywallen’s library with three custom folder cards, real icon choices, and test stills of the Workshop wallpaper" loading="lazy"></a>
+              <figcaption>Waywallen’s library with demo wallpaper stills.</figcaption>
+            </figure>
+            <figure>
+              <a href="./assets/folder-editor.webp"><img src="./assets/folder-editor.webp" width="524" height="514" alt="Waywallen’s folder editor with its name, icon matrix, and color choices" loading="lazy"></a>
+              <figcaption>The folder editor in Waywallen.</figcaption>
+            </figure>
           </div>
-          <figcaption id="folder-caption">The folder editor with a test folder selected.</figcaption>
-        </figure>
+        </details>
       </div>
     </section>
 
-    <section id="themes" class="chapter themes" aria-labelledby="themes-heading" data-cinematic>
-      <div class="shell">
+    <section id="themes" class="chapter themes" aria-labelledby="themes-heading" data-theme="aurora" data-cinematic>
+      <div class="shell theme-layout">
         <div class="section-intro">
           <p class="kicker">Launcher themes</p>
-          <h2 id="themes-heading">A different look in a click.</h2>
-          <p>Pick a built-in preset or clone one and make it your own. Change the palette, texture, and motion of the launcher.</p>
+          <h2 id="themes-heading">Change the whole look.</h2>
+          <p>Try a preset, or clone one to change the launcher’s palette, text and icon colors, background texture, and motion.</p>
+          <div class="theme-switch" id="theme-switch" role="group" aria-label="Preview a launcher theme" hidden>
+            <button type="button" data-theme-view="aurora" aria-pressed="true">Aurora</button>
+            <button type="button" data-theme-view="sea-glass" aria-pressed="false">Sea Glass</button>
+            <button type="button" data-theme-view="ember" aria-pressed="false">Ember</button>
+            <button type="button" data-theme-view="editor" aria-pressed="false">Theme editor</button>
+          </div>
         </div>
-        <div class="theme-reel" role="group" aria-label="Featured theme presets" data-cinematic>
-          <figure class="theme-frame theme-sea-glass">
-            <div class="theme-preview">
-              <img src="./assets/theme-presets.webp" width="694" height="320" alt="" loading="lazy">
-            </div>
-            <figcaption>Sea Glass</figcaption>
-          </figure>
-          <figure class="theme-frame theme-aurora">
-            <div class="theme-preview">
-              <img src="./assets/theme-presets.webp" width="694" height="320" alt="" loading="lazy">
-            </div>
-            <figcaption>Aurora</figcaption>
-          </figure>
-          <figure class="theme-frame theme-ember">
-            <div class="theme-preview">
-              <img src="./assets/theme-presets.webp" width="694" height="320" alt="" loading="lazy">
-            </div>
-            <figcaption>Ember</figcaption>
-          </figure>
-        </div>
-        <details class="product-detail theme-gallery">
-          <summary>See all the presets in Waywallen</summary>
-          <figure>
-            <img src="./assets/theme-presets.webp" width="694" height="320" alt="The Waywallen Themes screen showing OLED, Christmas, Aurora, Sea Glass, and Ember with a Clone action under each preset" loading="lazy">
-          </figure>
-        </details>
+        <figure class="theme-stage" id="theme-stage">
+          <a href="./assets/theme-app-aurora.webp" id="theme-image-link" aria-label="Open the theme screenshot at full size">
+            <img id="theme-image" src="./assets/theme-aurora.webp" width="724" height="570" alt="Waywallen’s Themes screen with Aurora active and the preset gallery visible" loading="lazy">
+          </a>
+          <figcaption><span id="theme-caption" aria-live="polite">Aurora pairs a deep blue frame and mint accents with moving ribbons.</span> <a class="full-capture-link" id="theme-full-capture" href="./assets/theme-app-aurora.webp">View full screenshot</a></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -216,7 +261,7 @@ flatpak run --user --branch=custom org.waywallen.waywallen</code></pre>
 
   <footer class="shell footer">
     <div>
-      <a class="brand" href="./" aria-label="Waywallen Custom home"><img src="./assets/app-icon.png" width="28" height="28" alt=""><span>Waywallen Custom</span></a>
+      <a class="brand" href="#opening" aria-label="Waywallen Custom home"><img src="./assets/app-icon.png" width="28" height="28" alt=""><span>Waywallen Custom</span></a>
       <p>An independent build of Waywallen for Linux.</p>
     </div>
     <nav aria-label="Source and credits">
